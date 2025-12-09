@@ -11,6 +11,7 @@ RUN apt-get update && \
         intel-media-va-driver-non-free \
         intel-opencl-icd \
         i965-va-driver \
+        libmfx1 \
         vainfo \
         inotify-tools \
         jq \
