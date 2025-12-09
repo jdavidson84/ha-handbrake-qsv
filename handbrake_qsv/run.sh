@@ -18,6 +18,7 @@ echo "[handbrake-qsv] Extra:    $EXTRA_ARGS"
 echo "[handbrake-qsv] Checking QSV/VAAPI availability..."
 vainfo || echo "vainfo failed — GPU may not be mapped yet."
 
+# Process existing files
 find "$INPUT_DIR" -maxdepth 1 -type f | while read -r f; do
     BASENAME=$(basename "$f")
     OUTFILE="$OUTPUT_DIR/$BASENAME"
@@ -27,12 +28,14 @@ find "$INPUT_DIR" -maxdepth 1 -type f | while read -r f; do
         -i "$f" \
         -o "$OUTFILE" \
         -e qsv_h265 \
+        --no-hw-decoding \
         --preset "$PRESET" \
         $EXTRA_ARGS
 
     echo "[handbrake-qsv] Done: $OUTFILE"
 done
 
+# Watch for new files
 inotifywait -m -e close_write,create,move "$INPUT_DIR" | while read -r dir action file; do
     SRC="$dir$file"
     BASENAME="$file"
@@ -44,6 +47,7 @@ inotifywait -m -e close_write,create,move "$INPUT_DIR" | while read -r dir actio
         -i "$SRC" \
         -o "$OUTFILE" \
         -e qsv_h265 \
+        --no-hw-decoding \
         --preset "$PRESET" \
         $EXTRA_ARGS
 
