@@ -1,0 +1,36 @@
+{
+  "name": "HandBrake QSV Encoder",
+  "version": "1.0.0",
+  "slug": "handbrake_qsv",
+  "description": "Headless HandBrake encoder using Intel QSV on Ubuntu.",
+  "url": "https://github.com/jdavidson84/ha-handbrake-qsv",
+  "startup": "services",
+  "boot": "auto",
+  "arch": ["amd64"],
+  "init": false,
+  "ports": {},
+  "ports_description": {},
+  "map": [
+    "media:rw",
+    "share:rw",
+    "config:rw"
+  ],
+  "devices": [
+    "/dev/dri:/dev/dri:rwm"
+  ],
+  "privileged": [
+    "SYS_ADMIN"
+  ],
+  "options": {
+    "input": "/media/encode_in",
+    "output": "/media/encode_out",
+    "preset": "Very Fast 1080p30",
+    "extra_args": ""
+  },
+  "schema": {
+    "input": "str",
+    "output": "str",
+    "preset": "str",
+    "extra_args": "str"
+  }
+}
