@@ -8,6 +8,9 @@ RUN apt-get update && \
     apt-get install -y \
         handbrake-cli \
         intel-media-va-driver \
+        intel-media-va-driver-non-free \
+        intel-opencl-icd \
+        i965-va-driver \
         vainfo \
         inotify-tools \
         jq \
