@@ -7,6 +7,7 @@ ENV LIBVA_DRIVERS_PATH=/usr/lib/x86_64-linux-gnu/dri
 RUN apt-get update && \
     apt-get install -y \
         handbrake-cli \
+        ffmpeg \
         intel-media-va-driver \
         intel-media-va-driver-non-free \
         intel-opencl-icd \
