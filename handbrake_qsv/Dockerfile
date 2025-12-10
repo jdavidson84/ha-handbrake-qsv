@@ -9,7 +9,6 @@ RUN apt-get update && \
         handbrake-cli \
         ffmpeg \
         intel-media-va-driver \
-        intel-media-va-driver-non-free \
         intel-opencl-icd \
         i965-va-driver \
         libmfx1 \
