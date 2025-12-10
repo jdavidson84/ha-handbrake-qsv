@@ -27,3 +27,5 @@ RUN chmod +x /usr/local/bin/run.sh
 VOLUME ["/config", "/input", "/output"]
 
 CMD ["/usr/local/bin/run.sh"]
+
+Remove non-free driver and add ffmpeg
